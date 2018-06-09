@@ -17,6 +17,8 @@ api for garden bot solution
 
 ## Use
 
+configuration settings in `./config.js`
+
 run `npm i` to install all dependencies
 
 run `npm run dev` to run the local development version for testing
