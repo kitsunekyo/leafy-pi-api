@@ -28,3 +28,47 @@ run `npm run dev` to run the local development version for testing
 run `npm run prod` to run the server with the "real" services.
 
 > this will only work when run on a raspberry pi, as it needs gpio inputs to function
+
+## Routes
+
+> Found in `./routes/`
+
+### User
+
+`/user/create`
+
+**body**
+
+```json
+{
+  "email": "my@email.com",
+  "password": "myPassword"
+}
+```
+
+`/user/delete`
+
+**body**
+
+```json
+{
+  "_id": "123456"
+}
+```
+
+`/user/profile`
+
+**response**
+
+```json
+{
+  "_id": "123456",
+  "email": "my@email.com"
+}
+```
+
+### Pump
+
+### Sensor
+
+### Event
