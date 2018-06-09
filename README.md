@@ -2,6 +2,13 @@
 
 api for garden bot solution
 
+## Features
+
+- jwt authentication (bearer token)
+- read digital sensors (soil moisture sensor)
+- write to gpio pins (activate water pump)
+- event log
+
 ## Requirements
 
 - mongodb
