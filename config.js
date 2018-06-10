@@ -1,5 +1,5 @@
 const config = {
-  port: 8080,
+  port: 4000,
   jwt_secret: 'leafylovesyourplants',
 };
 
