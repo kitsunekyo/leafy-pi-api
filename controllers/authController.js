@@ -25,6 +25,8 @@ const authController = {
 
           const token = jwt.sign(user, jwt_secret);
 
+          res.cookie('jwt', token);
+
           return res.json({
             user,
             token
