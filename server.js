@@ -2,8 +2,8 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const passport = require('passport');
+const cors = require('cors');
 
 const CONFIG = require('./config');
 
@@ -24,26 +24,21 @@ app.use(
 );
 
 // Access Control Middleware
-app.use(function(req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // Request methods you wish to allow
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-  );
-  // Request headers you wish to allow
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With,content-type'
-  );
-  // Pass to next layer of middleware
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
+
 mongoose.connect('mongodb://localhost/leafy');
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.json({
     message: 'Express is up!',
   });

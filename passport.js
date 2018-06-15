@@ -11,18 +11,17 @@ const JWTStrategy = passportJWT.Strategy;
 const User = require('./models/User');
 
 passport.use(
-  new LocalStrategy(
-    {
+  new LocalStrategy({
       usernameField: 'email',
       passwordField: 'password',
     },
-    function(email, password, cb) {
+    function (email, password, cb) {
       User.findOne({
-        email: email,
-      })
+          email: email,
+        })
         .then(user => {
           if (!user) {
-            return cb(null, false, {
+            return cb(false, false, {
               message: 'Incorrect email or password.',
             });
           }
@@ -30,19 +29,17 @@ passport.use(
             result => {
               console.log('success');
               return cb(
-                null,
-                {
+                null, {
                   _id: user._id,
                   email,
-                },
-                {
+                }, {
                   message: 'Logged In Successfully',
                 }
               );
             },
             err => {
               console.log('wrong');
-              return cb(null, false, {
+              return cb(true, false, {
                 message: 'something went wrong',
               });
             }
@@ -56,12 +53,13 @@ passport.use(
 );
 
 passport.use(
-  new JWTStrategy(
-    {
+  new JWTStrategy({
       jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
       secretOrKey: jwt_secret,
     },
-    function(jwtPayload, cb) {
+    function (jwtPayload, cb) {
+      console.log('HEAST');
+
       return User.findById(jwtPayload._id)
         .then(user => {
           return cb(null, {
