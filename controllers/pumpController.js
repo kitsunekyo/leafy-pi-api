@@ -21,7 +21,20 @@ const pumpController = {
     });
   },
   water: function (req, res, next) {
-    const duration = 10000;
+    let duration = 10000;
+    if (req.query.duration) {
+      try {
+        const queryDuration = parseInt(req.query.duration);
+        if (Number.isInteger(queryDuration)) {
+          duration = queryDuration;
+        } else {
+          console.log('duration value is not a number, using default');
+        }
+      } catch (e) {
+        console.log('queryDuration couldnt be parsed');
+      }
+    }
+
     pump.for(duration).then(() => {
       res.json({
         data: {

@@ -14,7 +14,6 @@ const RelaisFactory = (pin) => {
     },
     for (duration) {
       return new Promise((resolve, reject) => {
-        console.log(this.gpio);
         setTimeout(() => {}, duration);
         resolve();
       });
