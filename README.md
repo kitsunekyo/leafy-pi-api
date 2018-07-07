@@ -36,6 +36,10 @@ sudo apt-get install mongodb-server
 Start the service on your pi with this command:  
 `sudo service mongod start`
 
+Setup pm2 via `sudo env PATH=$PATH:/usr/local/bin pm2 startup systemd -u pi --hp /home/pi`
+
+Edit the service with `sudo vim /etc/systemd/system/pm2-pi.service` and comment out the line `Type=forking`. You can now save pm2 processes and they should reboot automatically.
+
 ## Use
 
 Run `npm i` to install all dependencies.
