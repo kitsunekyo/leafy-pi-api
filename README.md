@@ -15,19 +15,41 @@ api for garden bot solution
 - build-tools
 - raspberry pi
 
+## Install
+
+Lets get started by installing mongodb version 2.x on your machine / raspberry pi.
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mongodb-server
+```
+
+Start the service on your pi with this command:  
+`sudo service mongod start`
+
 ## Use
 
-configuration settings in `./config.js`
+Run `npm i` to install all dependencies.
 
-run `npm i` to install all dependencies
-
-run `npm run dev` to run the local development version for testing
+a) Run `npm run dev` to run the local development version for testing
 
 > it will be using mock services instead of any raspberry pi connectors
 
-run `npm run prod` to run the server with the "real" services.
+b) Run `npm run prod` to run the server with the "real" services.
 
 > this will only work when run on a raspberry pi, as it needs gpio inputs to function
+
+Send a POST request to `localhost:4000/auth/register` with your account details in the body (json)
+
+```json
+{
+  "email": "myemail@gmail.com",
+  "password": "myPassword123"
+}
+```
+
+> For security reasons, I'd comment out the `/register` route in `./routes/auth.js`, so users cant just register.
 
 ## Routes
 
