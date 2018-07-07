@@ -15,6 +15,14 @@ api for garden bot solution
 - build-tools
 - raspberry pi
 
+## Hardware Setup
+
+Set up your raspberry pi and plug in your gpio stuff.
+
+gpio port 4: DHT11  
+gpio port 17: moisture sensor  
+gpio port 27: relais
+
 ## Install
 
 Lets get started by installing mongodb version 2.x on your machine / raspberry pi.
