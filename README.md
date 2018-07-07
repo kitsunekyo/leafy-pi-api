@@ -25,6 +25,10 @@ gpio port 27: relais
 
 ## Install
 
+### Prerequisites
+
+#### MongoDB - database
+
 Lets get started by installing mongodb version 2.x on your machine / raspberry pi.
 
 ```bash
@@ -35,6 +39,8 @@ sudo apt-get install mongodb-server
 
 Start the service on your pi with this command:  
 `sudo service mongod start`
+
+#### pm2 - node process manager
 
 Setup pm2 via `sudo env PATH=$PATH:/usr/local/bin pm2 startup systemd -u pi --hp /home/pi`
 
