@@ -1,6 +1,7 @@
 const RelaisFactory = (pin) => {
+  const gpio = 1;
   return {
-    gpio: null,
+    gpio,
     on() {
       return new Promise((resolve, reject) => {
         resolve();
@@ -13,6 +14,7 @@ const RelaisFactory = (pin) => {
     },
     for (duration) {
       return new Promise((resolve, reject) => {
+        console.log(this.gpio);
         setTimeout(() => {}, duration);
         resolve();
       });

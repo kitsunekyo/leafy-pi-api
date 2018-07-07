@@ -2,7 +2,7 @@ const Gpio = require('onoff').Gpio;
 
 const RelaisFactory = (pin) => {
   const gpio = new Gpio(pin, 'out');
-  this.gpio.writeSync(1);
+  gpio.writeSync(1);
   return {
     gpio,
     on() {
