@@ -21,7 +21,7 @@ const pumpController = {
     });
   },
   water: function (req, res, next) {
-    let duration = 10000;
+    let duration = 5000;
     if (req.query.duration) {
       try {
         const queryDuration = parseInt(req.query.duration);
